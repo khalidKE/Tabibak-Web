@@ -261,6 +261,7 @@ const nearbyDoctors = [
 
 document.addEventListener("DOMContentLoaded", () => {
   bindScroll();
+  setupMenuToggle();
   setupRoleToggle();
   setupLanguageToggle();
   setupDoctorStatus();
@@ -287,6 +288,41 @@ function bindScroll() {
   });
 }
 
+function setupMenuToggle() {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.getElementById("primary-nav");
+  if (!toggle || !nav) return;
+
+  const closeNav = () => {
+    nav.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  };
+
+  const openNav = () => {
+    nav.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+  };
+
+  toggle.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    expanded ? closeNav() : openNav();
+  });
+
+  nav.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (window.innerWidth <= 720) {
+        closeNav();
+      }
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 720) {
+      closeNav();
+    }
+  });
+}
+
 function setupRoleToggle() {
   document.querySelectorAll(".role-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -305,10 +341,11 @@ function setupLanguageToggle() {
     state.language = state.language === "en" ? "ar" : "en";
     const isArabic = state.language === "ar";
     document.documentElement.setAttribute("dir", isArabic ? "rtl" : "ltr");
+    document.documentElement.setAttribute("lang", isArabic ? "ar" : "en");
     document.body.style.fontFamily = isArabic
       ? '"IBM Plex Sans Arabic", "Space Grotesk", system-ui, sans-serif'
       : '"Space Grotesk", "IBM Plex Sans Arabic", system-ui, sans-serif';
-    button.textContent = isArabic ? "العربية" : "English";
+    button.textContent = isArabic ? "???????" : "English";
   });
 }
 
@@ -773,24 +810,26 @@ function renderPrescriptions() {
       return;
     }
     table.innerHTML = `
-      <table class="table-lite">
-        <tbody>
-          ${filtered
-            .map(
-              (p) => `
-            <tr>
-              <td>${p.patient}</td>
-              <td>${p.doctor}</td>
-              <td>${p.diagnosis}</td>
-              <td><span class="status ${p.status.toLowerCase()}">${p.status}</span></td>
-              <td>${p.medications} meds</td>
-              <td>${p.dates}</td>
-            </tr>
-          `
-            )
-            .join("")}
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="table-lite">
+          <tbody>
+            ${filtered
+              .map(
+                (p) => `
+              <tr>
+                <td>${p.patient}</td>
+                <td>${p.doctor}</td>
+                <td>${p.diagnosis}</td>
+                <td><span class="status ${p.status.toLowerCase()}">${p.status}</span></td>
+                <td>${p.medications} meds</td>
+                <td>${p.dates}</td>
+              </tr>
+            `
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>
     `;
   };
   renderTab(tabs[0]);

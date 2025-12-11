@@ -16,14 +16,22 @@
 <body>
     <div class="page-shell">
         <header class="topbar">
-            <div class="brand">
-                <div class="brand-mark">T</div>
-                <div>
-                    <div class="brand-name">Tabibak</div>
-                    <div class="brand-sub">Smart healthcare platform</div>
+            <div class="topbar-left">
+                <div class="brand">
+                    <div class="brand-mark">T</div>
+                    <div>
+                        <div class="brand-name">Tabibak</div>
+                        <div class="brand-sub">Smart healthcare platform</div>
+                    </div>
                 </div>
+                <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">
+                    <span class="bars" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="menu-label">Menu</span>
+                </button>
             </div>
-            <nav class="nav-links" aria-label="Primary">
+            <nav class="nav-links" id="primary-nav" aria-label="Primary">
                 <button data-scroll="#overview">Overview</button>
                 <button data-scroll="#booking">Bookings</button>
                 <button data-scroll="#telemed">Telemed</button>
@@ -37,7 +45,7 @@
                     <button class="role-btn" data-role="doctor">Doctor</button>
                 </div>
                 <button class="pill ghost" id="language-toggle" aria-live="polite">English</button>
-                <button class="pill primary" data-scroll="#contact">Get in touch</button>
+                <button class="pill primary" data-scroll="#booking">Get in touch</button>
             </div>
         </header>
 
@@ -147,20 +155,6 @@
                 </div>
             </section>
 
-            <section class="panel-grid" id="contact">
-                <div class="panel header">
-                    <div>
-                        <p class="eyebrow">Compliance & handoff</p>
-                        <h2>Ready for engineering</h2>
-                        <p class="lede">This demo mirrors data models, statuses, and flows defined in the Flutter app (lib/*). Extend endpoints or plug real APIs without changing the UI contract.</p>
-                    </div>
-                    <div class="contact-actions">
-                        <button class="pill primary">Schedule a walkthrough</button>
-                        <button class="pill ghost">Export requirements</button>
-                        <button class="pill outline">Download mock data</button>
-                    </div>
-                </div>
-            </section>
         </main>
         <footer class="footer">
             <div class="footer-left">
