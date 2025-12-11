@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabibak - Smart Healthcare Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-mark">T</div>
+                <div>
+                    <div class="brand-name">Tabibak</div>
+                    <div class="brand-sub">Smart healthcare platform</div>
+                </div>
+            </div>
+            <nav class="nav-links" aria-label="Primary">
+                <button data-scroll="#overview">Overview</button>
+                <button data-scroll="#booking">Bookings</button>
+                <button data-scroll="#telemed">Telemed</button>
+                <button data-scroll="#chat">Chat</button>
+                <button data-scroll="#records">Records</button>
+                <button data-scroll="#settings">Settings</button>
+            </nav>
+            <div class="topbar-actions">
+                <div class="role-toggle" aria-label="Role switch">
+                    <button class="role-btn active" data-role="patient">Patient</button>
+                    <button class="role-btn" data-role="doctor">Doctor</button>
+                </div>
+                <button class="pill ghost" id="language-toggle" aria-live="polite">English</button>
+                <button class="pill primary" data-scroll="#contact">Get in touch</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="overview">
+                <div class="hero-content">
+                    <p class="eyebrow">HIPAA-ready - English / Arabic - Web + Mobile parity</p>
+                    <h1>Unified care journeys for patients and doctors.</h1>
+                    <p class="lede">
+                        This web experience mirrors the Tabibak Flutter app: role-based dashboards, secure
+                        onboarding, doctor discovery, bookings, telemedicine, chat, medical files, prescriptions,
+                        and settings.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="pill primary" data-scroll="#booking">Book a doctor</button>
+                        <button class="pill ghost" data-scroll="#telemed">Preview telemed</button>
+                        <button class="pill outline" data-scroll="#chat">See messaging</button>
+                    </div>
+                    <div class="chips">
+                        <span class="chip">In-person & video appointments</span>
+                        <span class="chip">Role-based routing</span>
+                        <span class="chip">Symptom checker</span>
+                        <span class="chip">Medical file + prescriptions</span>
+                        <span class="chip">Nearby doctors & maps</span>
+                    </div>
+                </div>
+                <div class="hero-panel">
+                    <div class="stat-card">
+                        <div class="stat-label">Active roles</div>
+                        <div class="stat-value" id="role-stat">Patient</div>
+                        <div class="stat-sub">Switch roles to preview routing + dashboards.</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Flows mirrored</div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-sub">Auth, onboarding, discovery, bookings, telemed, chat, records, settings.</div>
+                    </div>
+                    <div class="stat-card accent">
+                        <div class="stat-label">Security stance</div>
+                        <div class="stat-value">HIPAA / GDPR</div>
+                        <div class="stat-sub">Secure auth, data minimization, right-to-delete, encrypted storage placeholders.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel-grid" id="booking">
+                <div class="panel header">
+                    <div>
+                        <p class="eyebrow">Doctor discovery & booking</p>
+                        <h2>Search, filters, booking types, summaries</h2>
+                        <p class="lede">Specialty -> doctor -> appointment type (in-person/video/follow-up/emergency/routine) -> date/time -> notes -> confirmation.</p>
+                    </div>
+                    <div class="filters" id="booking-filters"></div>
+                </div>
+                <div class="panel" id="booking-results"></div>
+            </section>
+
+            <section class="panel-grid two-col" id="telemed">
+                <div class="panel">
+                    <p class="eyebrow">Telemedicine</p>
+                    <h2>Call states, controls, recording, chat overlay</h2>
+                    <div id="telemedicine-card"></div>
+                </div>
+                <div class="panel">
+                    <p class="eyebrow">Appointments</p>
+                    <h2>Status and type aware management</h2>
+                    <div id="appointments-board"></div>
+                </div>
+            </section>
+
+            <section class="panel-grid two-col" id="chat">
+                <div class="panel">
+                    <p class="eyebrow">Chat & notifications</p>
+                    <h2>Doctor-patient messaging with attachments + call actions</h2>
+                    <div id="chat-area"></div>
+                </div>
+                <div class="panel">
+                    <p class="eyebrow">Symptom checker</p>
+                    <h2>Free text, common symptoms, urgency guidance</h2>
+                    <div id="symptom-checker"></div>
+                </div>
+            </section>
+
+            <section class="panel-grid two-col" id="records">
+                <div class="panel">
+                    <p class="eyebrow">Medical file</p>
+                    <h2>History, prescriptions, reports, allergies</h2>
+                    <div id="medical-file"></div>
+                </div>
+                <div class="panel">
+                    <p class="eyebrow">Prescriptions</p>
+                    <h2>Tabbed management with search, status, stats</h2>
+                    <div id="prescriptions"></div>
+                </div>
+            </section>
+
+            <section class="panel-grid two-col" id="nearby">
+                <div class="panel">
+                    <p class="eyebrow">Nearby doctors</p>
+                    <h2>Location-aware discovery with availability</h2>
+                    <div id="nearby-doctors"></div>
+                </div>
+                <div class="panel" id="settings">
+                    <p class="eyebrow">Profile & settings</p>
+                    <h2>Notifications, theme, language, privacy</h2>
+                    <div id="settings-panel"></div>
+                </div>
+            </section>
+
+            <section class="panel-grid" id="contact">
+                <div class="panel header">
+                    <div>
+                        <p class="eyebrow">Compliance & handoff</p>
+                        <h2>Ready for engineering</h2>
+                        <p class="lede">This demo mirrors data models, statuses, and flows defined in the Flutter app (lib/*). Extend endpoints or plug real APIs without changing the UI contract.</p>
+                    </div>
+                    <div class="contact-actions">
+                        <button class="pill primary">Schedule a walkthrough</button>
+                        <button class="pill ghost">Export requirements</button>
+                        <button class="pill outline">Download mock data</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer-left">
+                <div class="brand">
+                    <div class="brand-mark">T</div>
+                    <div>
+                        <div class="brand-name">Tabibak</div>
+                        <div class="brand-sub">Care journeys. Secure by design.</div>
+                    </div>
+                </div>
+                <p class="footnote">Flows mirrored from Splash, Onboarding, Auth, Home, Doctor Discovery, Booking, Telemedicine, Chat, Symptom Checker, Medical File, Prescriptions, Nearby Doctors, Profile, Settings.</p>
+            </div>
+            <div class="footer-right">
+                <div class="chip ghost">Material 3 styling</div>
+                <div class="chip ghost">Responsive web</div>
+                <div class="chip ghost">English / Arabic scaffold</div>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
