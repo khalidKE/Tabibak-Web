@@ -2,6 +2,9 @@
 
 Single-page HTML/CSS/JS demo mirroring the Tabibak Flutter app flows (doctor discovery, booking, telemedicine, chat, medical records, prescriptions, nearby doctors, settings) with a responsive web layout.
 
+## Live demo
+- https://khalidke.github.io/Tabibak-Web/
+
 ## What's here
 - Landing hero with CTAs for booking, telemedicine, and messaging previews.
 - Booking: specialty/location/type filters, doctor cards, availability-aware actions.
