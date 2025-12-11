@@ -91,6 +91,17 @@ body {
   grid-auto-flow: column;
   gap: 8px;
   justify-content: start;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.nav-links::-webkit-scrollbar {
+  height: 6px;
+}
+
+.nav-links::-webkit-scrollbar-thumb {
+  background: var(--stroke);
+  border-radius: 999px;
 }
 
 .nav-links button {
@@ -698,5 +709,71 @@ body {
 
   .footer {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    padding: 16px 14px 32px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .panel.header {
+    gap: 12px;
+  }
+
+  .hero {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .call-controls {
+    flex-direction: column;
+  }
+
+  .call-controls button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-actions,
+  .contact-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 540px) {
+  .topbar {
+    padding: 12px;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .hero {
+    padding: 16px;
+  }
+
+  .chip {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer {
+    padding: 14px 10px;
   }
 }
