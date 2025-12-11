@@ -291,16 +291,19 @@ function bindScroll() {
 function setupMenuToggle() {
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.getElementById("primary-nav");
+  const overlay = document.getElementById("nav-overlay");
   if (!toggle || !nav) return;
 
   const closeNav = () => {
     nav.classList.remove("open");
     toggle.setAttribute("aria-expanded", "false");
+    if (overlay) overlay.classList.remove("active");
   };
 
   const openNav = () => {
     nav.classList.add("open");
     toggle.setAttribute("aria-expanded", "true");
+    if (overlay) overlay.classList.add("active");
   };
 
   toggle.addEventListener("click", () => {
@@ -315,6 +318,8 @@ function setupMenuToggle() {
       }
     });
   });
+
+  overlay?.addEventListener("click", closeNav);
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 720) {
